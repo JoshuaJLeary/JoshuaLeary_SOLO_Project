@@ -46,6 +46,16 @@ router.post('/register', (req, res, next) => {
     .catch((err) => { next(err); });
 });
 
+router.post('/event', (req, res, next) => {
+  console.log(req.body);
+  const event = req.body;
+  const queryText = `INSERT INTO event (event_name, course_name, course_address, course_phone, tee_time) VALUES ($1, $2, $3, $4, $5)`;
+  pool.query(queryText, [event.name, event.course, event.address, event.phone, event.teeTime])
+  .then( () => { res.sendStatus(201)})
+  .catch( (error) => {next(error)});
+});
+
+
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route
 // this middleware will run our POST if successful

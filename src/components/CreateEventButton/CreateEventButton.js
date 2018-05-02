@@ -4,6 +4,8 @@ import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import AddIcon from '@material-ui/icons/Add';
 import Icon from 'material-ui/Icon';
+import { Link } from 'react-router-dom';
+
 
 class CreateEventButton extends Component {
     constructor() {
@@ -12,9 +14,11 @@ class CreateEventButton extends Component {
     render() {
         return(
             <div>
-                <Button size="" variant="fab" color="primary" aria-label="add">
+                <Link to="/create">
+                <Button variant="fab" color="primary" aria-label="add">
                 <AddIcon />
                 </Button>
+                </Link>
             </div>
         )
     }
