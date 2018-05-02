@@ -29,7 +29,25 @@ router.get('/profile', (req, res) => {
     res.sendStatus(403);
   }
   
-})
+});
+
+router.get('/events', (req, res) => {
+  console.log('user:', req.user);
+  if(req.isAuthenticated()){
+    const queryText = `SELECT event_name, course_name, course_address, course_phone, tee_time VALUES ($1, $2, $3, $4, $5)`;
+    pool.query(queryText, [req.user.id])
+    .then( (result) => {
+      console.log('result.rows:', result.rows);
+      res.send(result.rows);
+    })
+    .catch( (erro) => {
+      console.log('error in event GET:', error);
+      res.sendStatus(500);
+    })
+  }else {
+    res.sendStatus(403);
+  }
+});
 
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
