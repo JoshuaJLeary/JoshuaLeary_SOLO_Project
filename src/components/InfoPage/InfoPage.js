@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import CreateEventButton from '../CreateEventButton/CreateEventButton';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -26,8 +27,9 @@ class InfoPage extends Component {
       content = (
         <div>
           <p>
-            Info Page
+            Golf Events
           </p>
+          <CreateEventButton />
         </div>
       );
     }

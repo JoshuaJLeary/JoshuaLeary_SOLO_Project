@@ -9,6 +9,14 @@ class RegisterPage extends Component {
       username: '',
       password: '',
       message: '',
+      golfProfile: {
+        name: '',
+        city: '',
+        skill: '',
+        bio: '',
+        alcohol: false,
+        tobacco: false,
+      }
     };
   }
 
@@ -26,6 +34,7 @@ class RegisterPage extends Component {
         body: JSON.stringify({
           username: this.state.username,
           password: this.state.password,
+          golfProfile: this.state.golfProfile,
         }),
       });
 
@@ -50,8 +59,15 @@ class RegisterPage extends Component {
 
   handleInputChangeFor = propertyName => (event) => {
     this.setState({
+      ...this.state,
       [propertyName]: event.target.value,
+      golfProfile: {
+      ...this.state.golfProfile,
+      [propertyName]: event.target.value,
+      }
     });
+    // console.log(this.state)
+
   }
 
   renderAlert() {
@@ -73,7 +89,7 @@ class RegisterPage extends Component {
       <div>
         {this.renderAlert()}
         <form onSubmit={this.registerUser}>
-          <h1>Register User</h1>
+          <h1>Create Profile</h1>
           <div>
             <label htmlFor="username">
               Username:
@@ -95,6 +111,72 @@ class RegisterPage extends Component {
                 onChange={this.handleInputChangeFor('password')}
               />
             </label>
+          </div>
+          <div>
+            <label htmlFor="name">
+              Name:
+              <input
+                type="text"
+                name="name"
+                value={this.state.golfProfile.name}
+                onChange={this.handleInputChangeFor('name')}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="city">
+              City:
+              <input
+                type="text"
+                name="city"
+                value={this.state.golfProfile.city}
+                onChange={this.handleInputChangeFor('city')}
+              />
+            </label>
+           <div>
+            <label htmlFor="skill">
+              Skill Level:
+              <input
+                type="integer"
+                name="skill"
+                value={this.state.golfProfile.skill}
+                onChange={this.handleInputChangeFor('skill')}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="bio">
+              Bio:
+              <input
+                type="text"
+                name="bio"
+                value={this.state.golfProfile.bio}
+                onChange={this.handleInputChangeFor('bio')}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="alcohol">
+              Alcohol:
+              <input
+                type="boolean"
+                name="alocohol"
+                value={this.state.golfProfile.alcohol}
+                onChange={this.handleInputChangeFor('alcohol')}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="tobacco">
+              Tobacco:
+              <input
+                type="boolean"
+                name="tobacco"
+                value={this.state.golfProfile.tobacco}
+                onChange={this.handleInputChangeFor('tobacco')}
+              />
+            </label>
+          </div>
           </div>
           <div>
             <input
