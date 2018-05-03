@@ -21,7 +21,7 @@ router.get('/profile', (req, res) => {
     console.log('result.rows:', result.rows);
     res.send(result.rows);
   })
-  .catch( (error)=> {
+  .catch( (error) => {
     console.log('error in GET', error);
     res.sendStatus(500);
   })
@@ -32,21 +32,35 @@ router.get('/profile', (req, res) => {
 });
 
 router.get('/events', (req, res) => {
-  console.log('user:', req.user);
-  if(req.isAuthenticated()){
-    const queryText = `SELECT event_name, course_name, course_address, course_phone, tee_time VALUES ($1, $2, $3, $4, $5)`;
-    pool.query(queryText, [req.user.id])
+    const queryText = `SELECT * FROM event`;
+    pool.query(queryText)
     .then( (result) => {
       console.log('result.rows:', result.rows);
       res.send(result.rows);
     })
-    .catch( (erro) => {
+    .catch( (error) => {
       console.log('error in event GET:', error);
       res.sendStatus(500);
     })
+});
+
+router.get('/myEvent', (req, res) => {
+  console.log('user:', req.user);
+  if(req.isAuthenticated()){
+    const queryText = `SELECT `;
+  pool.query(queryText)
+  .then( (result) => {
+    console.log('result.rows:', result.rows);
+    res.send(result.rows);
+  })
+  .catch( (error) => {
+    console.log('error in Get', error);
+    res.sendStatus(500);
+  })
   }else {
     res.sendStatus(403);
   }
+  
 });
 
 // Handles POST request with new user data
@@ -67,10 +81,31 @@ router.post('/register', (req, res, next) => {
 router.post('/event', (req, res, next) => {
   console.log(req.body);
   const event = req.body;
-  const queryText = `INSERT INTO event (event_name, course_name, course_address, course_phone, tee_time) VALUES ($1, $2, $3, $4, $5)`;
-  pool.query(queryText, [event.name, event.course, event.address, event.phone, event.teeTime])
-  .then( () => { res.sendStatus(201)})
-  .catch( (error) => {next(error)});
+  (async () => {
+    const client = await pool.connect();
+    try {
+      await client.query('BEGIN');
+      let queryText = `INSERT INTO event (event_name, course_name, course_address, course_phone, tee_time) VALUES ($1, $2, $3, $4, $5) RETURNING id`;
+      const values = [event.name, event.course, event.address, event.phone, event.teeTime];
+      const eventResult = await client.query(queryText, values);
+      const eventId = eventResult.rows[0].id;
+
+      queryText = `INSERT INTO attendee (person_id, event_id) VALUES ($1, $2) RETURNING id`;
+      const result = await client.query(queryText, [req.user.id, eventId]);
+      await client.query('COMMIT');
+      res.sendStatus(201);
+    }catch(err) {
+      console.log('ROLLBACK', err);
+      await client.query('ROLLBACK');
+      throw err;
+    }finally {
+      client.release();
+    }
+  })().catch( (error) => {
+    console.log('CATCH', error);
+    res.sendStatus(500);
+  });
+
 });
 
 

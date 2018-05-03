@@ -5,13 +5,13 @@ function* eventSaga() {
     yield takeEvery('GET_EVENT', getEventSaga)
 }
 
-function* getEventSaga() {
+function* getEventSaga(action) {
     console.log('getEventSaga triggered:', action);
     try{
         const eventResponse = yield call(axios.get, '/api/user/events');
         console.log(eventResponse);
         yield put({
-            type: 'SET_EVENT',
+            type: 'FETCH_EVENT',
             payload: eventResponse.data,
         })
     }catch(error){

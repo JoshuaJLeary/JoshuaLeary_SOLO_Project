@@ -1,6 +1,6 @@
 const createdEvent = (state = [], action) => {
-    switch(aciton.type) {
-        case 'SET_EVENT':
+    switch(action.type) {
+        case 'FETCH_EVENT':
         return action.payload
         default:
         return state;

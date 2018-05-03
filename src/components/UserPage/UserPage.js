@@ -35,12 +35,11 @@ class UserPage extends Component {
       console.log(this.props);
       console.log('golfer:', golfer);
       return <ul>
-        <li>{golfer.name}</li>
-        <li>{golfer.city}</li>
-        <li>{golfer.skill}</li>
-        <li>{golfer.bio}</li>
-
-        </ul>
+              <li>{golfer.name}</li>
+              <li>{golfer.city}</li>
+              <li>{golfer.skill}</li>
+              <li>{golfer.bio}</li>
+            </ul>
     })
 
     if (this.props.user.userName) {
