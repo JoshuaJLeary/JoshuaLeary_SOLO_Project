@@ -5,6 +5,7 @@ import Nav from '../../components/Nav/Nav';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
+import MyEventCard from '../MyEventCard/MyEventCard';
 
 
 const mapStateToProps = state => ({
@@ -16,6 +17,7 @@ class UserPage extends Component {
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.props.dispatch({ type: 'GET_GOLFER'});
+    this.props.dispatch({ type: 'GET_MY_EVENTS'});
   }
 
   componentDidUpdate() {
@@ -42,6 +44,12 @@ class UserPage extends Component {
             </ul>
     })
 
+    let showMyEvents = this.props.state.myEvents.map((event) => {
+      console.log(this.props);
+      console.log('event:', event);
+      return <MyEventCard event={event}/>
+    })
+
     if (this.props.user.userName) {
       content = (
         <div>
@@ -53,6 +61,9 @@ class UserPage extends Component {
           <div>
             {myGolf}
             </div>
+            <div>
+              {showMyEvents}
+              </div>
           <button
             onClick={this.logout}
           >

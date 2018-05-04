@@ -12,6 +12,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   res.send(req.user);
 });
 
+// GET golf profile information from person table
 router.get('/profile', (req, res) => {
   console.log('user:',req.user);
   if(req.isAuthenticated()){
@@ -31,6 +32,7 @@ router.get('/profile', (req, res) => {
   
 });
 
+//GET all events from event table to populate Events View
 router.get('/events', (req, res) => {
     const queryText = `SELECT * FROM event`;
     pool.query(queryText)
@@ -44,10 +46,11 @@ router.get('/events', (req, res) => {
     })
 });
 
+//GET specific events for the user logged in
 router.get('/myEvent', (req, res) => {
   console.log('user:', req.user);
   if(req.isAuthenticated()){
-    const queryText = `SELECT `;
+    const queryText = `SELECT event.event_name, event.course_name, event.course_address, event.course_phone, event.tee_time, person.id FROM attendee JOIN event ON event.id = attendee.event_id JOIN person ON person.id = attendee.person_id`;
   pool.query(queryText)
   .then( (result) => {
     console.log('result.rows:', result.rows);
@@ -78,6 +81,7 @@ router.post('/register', (req, res, next) => {
     .catch((err) => { next(err); });
 });
 
+// await POST posts created events and populates attendee table with person_id and adds new created event_id
 router.post('/event', (req, res, next) => {
   console.log(req.body);
   const event = req.body;

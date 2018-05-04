@@ -4,9 +4,12 @@ import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import CreateEventButton from '../CreateEventButton/CreateEventButton';
+import EventCard from '../EventCard/EventCard';
+
 
 const mapStateToProps = state => ({
   user: state.user,
+  state: state,
 });
 
 class InfoPage extends Component {
@@ -23,6 +26,11 @@ class InfoPage extends Component {
 
   render() {
     let content = null;
+    let showEvents = this.props.state.createdEvent.map((event) => {
+      console.log('this.props:', this.props);
+      console.log('event:', event);
+      return <EventCard event={event}/>
+    })
 
     if (this.props.user.userName) {
       content = (
@@ -31,6 +39,7 @@ class InfoPage extends Component {
             Golf Events
           </p>
           <CreateEventButton />
+
         </div>
       );
     }
@@ -39,7 +48,11 @@ class InfoPage extends Component {
       <div>
         <Nav />
         { content }
+        <div>
+        {showEvents}
+        </div>
       </div>
+      
     );
   }
 }

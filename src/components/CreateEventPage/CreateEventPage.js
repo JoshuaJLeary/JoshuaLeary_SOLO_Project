@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class CreateEventPage extends Component {
     constructor() {
@@ -30,6 +31,8 @@ eventDetails = (event) => {
         type: 'SET_EVENT',
         payload: this.state,
     })
+    this.props.history.push('info');
+
 }
 
 

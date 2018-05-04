@@ -4,6 +4,7 @@ import loginSaga from './loginSaga';
 import mainSaga from './golfer.saga';
 import createEventSaga from './createEventSaga';
 import eventSaga from './golfEventSaga';
+import myEventSaga from './myEventSaga';
 
 
 export default function* rootSaga() {
@@ -13,6 +14,7 @@ export default function* rootSaga() {
     mainSaga(),
     createEventSaga(),
     eventSaga(),
+    myEventSaga(),
     // watchIncrementAsync()
   ]);
 }

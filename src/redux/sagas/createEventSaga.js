@@ -14,6 +14,9 @@ function* eventSaga(action) {
     }
     try{
         yield call(axios.post, '/api/user/event', action.payload, config);
+        yield put({
+            type: 'GET_EVENT'
+        })
 
 
     }catch(error){
