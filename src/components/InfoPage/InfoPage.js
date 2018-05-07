@@ -27,8 +27,6 @@ class InfoPage extends Component {
   render() {
     let content = null;
     let showEvents = this.props.state.createdEvent.map((event) => {
-      console.log('this.props:', this.props);
-      console.log('event:', event);
       return <EventCard event={event}/>
     })
 

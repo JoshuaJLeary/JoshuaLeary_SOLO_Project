@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
@@ -9,6 +10,16 @@ import '../EventCard/EventCard.css';
 
 
 class EventCard extends Component {
+
+    handleJoinEvent = (event) => {
+        // event.preventDefault();
+        console.log(this.props.event.id);
+        this.props.dispatch({
+            type: 'ATTEND_EVENT',
+            payload: event,
+        });
+    }
+
     render(){
         return(
             <Card className="allEvents">
@@ -36,7 +47,7 @@ class EventCard extends Component {
                       </div>
                   </Grid>
                   <Grid item xs={2}>
-                      <div id="join"><Button variant="raised" color="primary">Join</Button></div>
+                      <div id="join"><Button variant="raised" color="primary" onClick={() => this.handleJoinEvent(this.props.event)}>Join</Button></div>
                   </Grid>
                   {/* <Grid item xs={2}>
                     <div id="deviceDelete"><Button color="secondary"><Icon>delete</Icon></Button></div>
@@ -47,6 +58,9 @@ class EventCard extends Component {
         )
     }
 }
-export default EventCard;
+
+const mapStateToProps = state => ({state});
+
+export default connect(mapStateToProps)(EventCard);
 
 
