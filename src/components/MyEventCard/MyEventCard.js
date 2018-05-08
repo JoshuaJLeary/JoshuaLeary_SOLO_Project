@@ -5,6 +5,8 @@ import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
+import IconButton from 'material-ui/IconButton';
+import { Delete } from '@material-ui/icons';
 import '../MyEventCard/MyEventCard.css';
 
 
@@ -32,6 +34,9 @@ class MyEventCard extends Component {
                         </div>
                         <div>
                             <p>{this.props.event.tee_time}</p>
+                        </div>
+                        <div>
+                        <IconButton><Delete /></IconButton>
                         </div>
                       </div>
                   </Grid>

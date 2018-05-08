@@ -130,6 +130,26 @@ router.post('/attend', (req, res, next) => {
 
 })
 
+router.put('/updateProfile', (req, res, next) => {
+  console.log('req.body', req.body);
+  if(req.isAuthenticated()){
+    const newInfo = req.body;
+    let queryText = `UPDATE person SET name = $1, city = $2, skill = $3, bio = $4 WHERE id = $5 `;
+    pool.query(queryText, [newInfo.name, newInfo.city, newInfo.skill, newInfo.bio, req.user.id])
+    .then( (result) => {
+      console.log('successful UPDATE', result);
+      res.sendStatus(201);
+    })
+    .catch( (error) => {
+      console.log('error in UPDATE', error);
+      res.sendStatus(500);
+    })
+  }else {
+    res.sendStatus(403);
+  }
+});
+
+
 
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route

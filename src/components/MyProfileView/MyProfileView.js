@@ -30,11 +30,15 @@ class MyProfileView extends Component {
   
   handleEditSubmit = () => {
     this.props.dispatch({
-      type: 'EDIT_PROFILE',
+      type: 'UPDATE_PROFILE',
       payload: {name: this.state.name, city: this.state.city, skill: this.state.skill, bio: this.state.bio}
     })
     this.setState({
-      isEditing: false
+      isEditing: false,
+      name: '',
+      city: '',
+      skill: '',
+      bio: '',
     });
   }
   

@@ -7,6 +7,7 @@ import eventSaga from './golfEventSaga';
 import myEventSaga from './myEventSaga';
 import attendEventSaga from './attendEventSaga';
 import joinEvent from './attendEventSaga';
+import updateSaga from './updateMyProfileSaga';
 
 
 export default function* rootSaga() {
@@ -18,6 +19,7 @@ export default function* rootSaga() {
     eventSaga(),
     myEventSaga(),
     joinEvent(),
+    updateSaga(),
     // watchIncrementAsync()
   ]);
 }
