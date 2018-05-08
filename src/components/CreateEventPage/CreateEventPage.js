@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import MenuItem from 'material-ui/Menu/MenuItem';
+import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -14,6 +15,7 @@ class CreateEventPage extends Component {
             course: '',
             address: '',
             phone: '',
+            date: '',
             teeTime: ''
         }
     }
@@ -27,6 +29,7 @@ handleChangeFor = propertyName => (event) => {
 
 eventDetails = (event) => {
     event.preventDefault();
+    console.log('state:', this.state);
     this.props.dispatch({
         type: 'SET_EVENT',
         payload: this.state,
@@ -39,7 +42,6 @@ eventDetails = (event) => {
     render() {
         return(
             <div>
-              <form onSubmit={this.eventDetails}>
                 <TextField
                 id="name"
                 label="Event Name"
@@ -68,19 +70,32 @@ eventDetails = (event) => {
                  onChange={this.handleChangeFor('phone')}
                  margin="normal"
                  />
-                 <TextField 
+                 <TextField
+                    id="date"
+                    label="Event Date"
+                    type="date"
+                    value={this.state.date}
+                    defaultValue="2018-05-05"
+                    onChange={this.handleChangeFor('date')}
+                 />
+                 <TextField
+                    id="time"
+                    label="Tee-Time"
+                    type="time"
+                    defaultValue="07:00"
+                    value={this.state.teeTime}
+                    onChange={this.handleChangeFor('teeTime')}
+                />
+                 {/* <TextField 
                  id="teeTime"
                  label="Tee Time"
                  value={this.state.teeTime}
                  onChange={this.handleChangeFor('teeTime')}
                  margin="normal"
-                 />
-                 <input
-                    type="submit"
-                    name="submit"
-                    value="Create"
-                 />
-              </form>
+                 /> */}
+                 <Button onClick={this.eventDetails}>
+                    Create Event
+                 </Button>
             </div>
         )
     }

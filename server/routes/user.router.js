@@ -89,8 +89,8 @@ router.post('/event', (req, res, next) => {
     const client = await pool.connect();
     try {
       await client.query('BEGIN');
-      let queryText = `INSERT INTO event (event_name, course_name, course_address, course_phone, tee_time) VALUES ($1, $2, $3, $4, $5) RETURNING id`;
-      const values = [event.name, event.course, event.address, event.phone, event.teeTime];
+      let queryText = `INSERT INTO event (event_name, course_name, course_address, course_phone, event_date, tee_time) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`;
+      const values = [event.name, event.course, event.address, event.phone, event.date, event.teeTime];
       const eventResult = await client.query(queryText, values);
       const eventId = eventResult.rows[0].id;
 
