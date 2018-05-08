@@ -8,6 +8,7 @@ import myEventSaga from './myEventSaga';
 import attendEventSaga from './attendEventSaga';
 import joinEvent from './attendEventSaga';
 import updateSaga from './updateMyProfileSaga';
+import leaveEventSaga from './leaveEventSaga';
 
 
 export default function* rootSaga() {
@@ -20,6 +21,7 @@ export default function* rootSaga() {
     myEventSaga(),
     joinEvent(),
     updateSaga(),
+    leaveEventSaga(),
     // watchIncrementAsync()
   ]);
 }

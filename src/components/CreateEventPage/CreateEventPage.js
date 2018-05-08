@@ -77,6 +77,9 @@ eventDetails = (event) => {
                     value={this.state.date}
                     defaultValue="2018-05-05"
                     onChange={this.handleChangeFor('date')}
+                    InputLabelProps={{
+                        shrink: true,
+                      }}
                  />
                  <TextField
                     id="time"
@@ -85,6 +88,9 @@ eventDetails = (event) => {
                     defaultValue="07:00"
                     value={this.state.teeTime}
                     onChange={this.handleChangeFor('teeTime')}
+                    InputLabelProps={{
+                        shrink: true,
+                      }}
                 />
                  {/* <TextField 
                  id="teeTime"

@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Input, { InputLabel } from 'material-ui/Input';
+import { MenuItem } from 'material-ui/Menu';
+import { FormControl, FormHelperText } from 'material-ui/Form';
+import Select from 'material-ui/Select';
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -134,7 +138,23 @@ class RegisterPage extends Component {
               />
             </label>
            <div>
-            <label htmlFor="skill">
+           <InputLabel htmlFor="skill_level">Skill Level</InputLabel>
+           <Select
+            value={this.state.golfProfile.skill}
+            onChange={this.handleInputChangeFor('skill')}
+            // inputProps={{
+            //   name: 'age',
+            //   id: 'age-simple',
+            // }}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value='Beginner'>Beginner</MenuItem>
+            <MenuItem value='Amateur'>Amateur</MenuItem>
+            <MenuItem value='Professional'>Professional</MenuItem>
+          </Select>
+            {/* <label htmlFor="skill">
               Skill Level:
               <input
                 type="integer"
@@ -142,7 +162,7 @@ class RegisterPage extends Component {
                 value={this.state.golfProfile.skill}
                 onChange={this.handleInputChangeFor('skill')}
               />
-            </label>
+            </label> */}
           </div>
           <div>
             <label htmlFor="bio">

@@ -50,7 +50,7 @@ router.get('/events', (req, res) => {
 router.get('/myEvent', (req, res) => {
   console.log('user:', req.user);
   if(req.isAuthenticated()){
-    const queryText = `SELECT event.event_name, event.course_name, event.course_address, event.course_phone, event.tee_time, person.id FROM attendee JOIN event ON event.id = attendee.event_id JOIN person ON person.id = attendee.person_id WHERE person.id = $1`;
+    const queryText = `SELECT attendee.id, event.event_name, event.course_name, event.course_address, event.course_phone, event.tee_time FROM attendee JOIN event ON event.id = attendee.event_id JOIN person ON person.id = attendee.person_id WHERE person.id = $1`;
   pool.query(queryText, [req.user.id])
   .then( (result) => {
     console.log('result.rows:', result.rows);
@@ -121,8 +121,12 @@ router.post('/attend', (req, res, next) => {
     pool.query(queryText, [req.user.id, attending.id])
     .then( () => {res.sendStatus(201); })
     .catch( (error) => {
-      console.log('error in POST /attend:', error);
+      if(error.constraint === 'uc_tab'){
+        res.sendStatus(501);
+      }else {
+        console.log('error in POST /attend:',error);
       res.sendStatus(500);
+      }      
     })
   }else {
     res.sendStatus(403);
@@ -142,6 +146,25 @@ router.put('/updateProfile', (req, res, next) => {
     })
     .catch( (error) => {
       console.log('error in UPDATE', error);
+      res.sendStatus(500);
+    })
+  }else {
+    res.sendStatus(403);
+  }
+});
+
+router.delete('/:id', (req, res, next) => {
+  console.log(req.user);
+  console.log('what is this?',req.params);
+  console.log('req.body', req.body);
+  if(req.isAuthenticated()){
+    let queryText = `DELETE FROM attendee WHERE person_id = $1 AND id = $2`;
+    pool.query(queryText, [req.user.id, req.params.id])
+    .then( () => {
+      res.sendStatus(201);
+    })
+    .catch( (error) => {
+      console.log('error in DELETE', error);
       res.sendStatus(500);
     })
   }else {

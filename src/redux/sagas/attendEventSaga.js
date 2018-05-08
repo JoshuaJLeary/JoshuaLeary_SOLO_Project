@@ -1,5 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
+import Snackbar from 'material-ui/Snackbar';
+
 
 function* joinEvent(){
     yield takeEvery('ATTEND_EVENT', attendEventSaga);
@@ -20,6 +22,7 @@ function* attendEventSaga(action) {
         })
     }catch(error) {
         console.log('error in POST attendEventSaga:', error);
+        alert('You are already attending this event!');
 
     }
 }

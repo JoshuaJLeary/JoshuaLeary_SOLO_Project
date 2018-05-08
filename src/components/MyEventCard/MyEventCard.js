@@ -7,10 +7,19 @@ import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 import IconButton from 'material-ui/IconButton';
 import { Delete } from '@material-ui/icons';
+import { connect } from 'react-redux';
 import '../MyEventCard/MyEventCard.css';
 
 
 class MyEventCard extends Component {
+
+cancelEvent = () => {
+    this.props.dispatch({
+        type: 'LEAVE_EVENT',
+        payload: this.props.event
+    })
+}
+
     render() {
         return (
             <Card className="myEventCard">
@@ -36,7 +45,7 @@ class MyEventCard extends Component {
                             <p>{this.props.event.tee_time}</p>
                         </div>
                         <div>
-                        <IconButton><Delete /></IconButton>
+                        <IconButton onClick={this.cancelEvent}><Delete /></IconButton>
                         </div>
                       </div>
                   </Grid>
@@ -52,4 +61,9 @@ class MyEventCard extends Component {
     }
 }
 
-export default MyEventCard;
+const mapStateToProps = state => ({
+    user: state.user,
+    state: state
+  });
+
+export default connect(mapStateToProps)(MyEventCard);

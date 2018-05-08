@@ -9,7 +9,7 @@ function* getMyEventSaga(action) {
     console.log('getMyEventSaga triggered:', action);
     try{
         const myEventResponse = yield call(axios.get, '/api/user/myEvent');
-        console.log(myEventResponse);
+        console.log('events', myEventResponse);
         yield put({
             type: 'FETCH_MY_EVENTS',
             payload: myEventResponse.data,

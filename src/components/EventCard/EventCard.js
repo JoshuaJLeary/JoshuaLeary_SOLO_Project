@@ -14,6 +14,7 @@ class EventCard extends Component {
     handleJoinEvent = (event) => {
         // event.preventDefault();
         console.log(this.props.event.id);
+        console.log(event);
         this.props.dispatch({
             type: 'ATTEND_EVENT',
             payload: event,
