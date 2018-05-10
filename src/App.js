@@ -17,7 +17,7 @@ import CreateEventPage from './components/CreateEventPage/CreateEventPage';
 
 const App = () => (
   <div>
-    <Header title="Project Base" />
+    <Header title="4sum" />
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />

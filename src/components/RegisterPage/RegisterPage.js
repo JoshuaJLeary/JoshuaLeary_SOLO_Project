@@ -233,13 +233,15 @@ class RegisterPage extends Component {
           </div>
           </div>
           <div>
-          <Button onClick={this.registerUser}>Create Profile</Button>
-            <input
+          <Button variant="raised" color="primary" onClick={this.registerUser}>Create Profile</Button>
+            {/* <input
               type="submit"
               name="submit"
               value="Register"
-            />
-            <Link to="/home">Cancel</Link>
+            /> */}
+          </div>
+          <div>
+          <Link to="/home">Cancel</Link>
           </div>
       </div>
     );

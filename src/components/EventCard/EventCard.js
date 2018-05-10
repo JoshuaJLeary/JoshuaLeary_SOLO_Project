@@ -25,11 +25,11 @@ class EventCard extends Component {
     render(){
         return(
             <Card className="allEvents">
-              <Grid zeroMinWidth container spacing={16}>
+              <Grid container spacing={12} xs={12}>
                   {/* <Grid item xs={2}>
                     <div id="deviceMore"><Button ><Icon>expand_more</Icon></Button></div>
                   </Grid> */}
-                  <Grid className="myEventCards"item xs={8}>
+                  <Grid className="myEventCards"item>
                       <div className="deviceName">
                       <div>
                         <h4>{this.props.event.event_name}</h4>
@@ -51,8 +51,8 @@ class EventCard extends Component {
                         </div>
                       </div>
                   </Grid>
-                  <Grid item xs={2}>
-                      <div id="join"><Button variant="raised" color="primary" onClick={() => this.handleJoinEvent(this.props.event)}>Join</Button></div>
+                  <Grid item xs={12}>
+                      <div id="join"><Button variant="raised" color="secondary" onClick={() => this.handleJoinEvent(this.props.event)}>Join</Button></div>
                   </Grid>
                   {/* <Grid item xs={2}>
                     <div id="deviceDelete"><Button color="secondary"><Icon>delete</Icon></Button></div>

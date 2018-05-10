@@ -5,8 +5,10 @@
   "proxy": "http://localhost:5000",
   "dependencies": {
     "@material-ui/icons": "^1.0.0-beta.43",
+    "@mdi/font": "^2.3.54",
     "axios": "^0.17.1",
     "bcrypt": "^1.0.3",
+    "beer": "0.0.8",
     "body-parser": "^1.18.2",
     "cookie-session": "^2.0.0-beta.3",
     "dotenv": "^4.0.0",

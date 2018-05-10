@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
+import Input, { InputLabel } from 'material-ui/Input';
+import { MenuItem } from 'material-ui/Menu';
+import { FormControl, FormHelperText } from 'material-ui/Form';
+import Select from 'material-ui/Select';
 import { Edit } from '@material-ui/icons';
 import { Check } from '@material-ui/icons';
 import { Close } from '@material-ui/icons';
+import { Smoking } from '@material-ui/icons';
 import Paper from 'material-ui/Paper';
 import MyProfile from '../MyProfile/MyProfile';
+import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
+import beer from '../../styles/images/beer.svg';
 
 class MyProfileView extends Component {
   constructor(props) {
@@ -51,9 +58,22 @@ class MyProfileView extends Component {
       console.log(this.state);
     }
   } 
+
+  showAlcohol = () => {
+    console.log('help Kam...Help');
+    let drink;
+    if(this.props.golfer.alcohol === false){
+      drink = <img src={beer}/>
+      console.log('drink:',drink);
+    } else {
+      drink = <p></p>
+    }
+  }
   
   showEditing = () => {
+   
     if(this.state.isEditing){
+      console.log('this.state:', this.props.golfer);
       return(
         <div>
             <TextField
@@ -70,13 +90,29 @@ class MyProfileView extends Component {
             onChange={this.handleChangeFor('city')}
             margin="normal"
              />
-              <TextField
+              <InputLabel htmlFor="skill_level">Skill Level</InputLabel>
+           <Select
+            value={this.state.skill}
+            onChange={this.handleChangeFor('skill')}
+            // inputProps={{
+            //   name: 'age',
+            //   id: 'age-simple',
+            // }}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value='Beginner'>Beginner</MenuItem>
+            <MenuItem value='Amateur'>Amateur</MenuItem>
+            <MenuItem value='Professional'>Professional</MenuItem>
+          </Select>
+              {/* <TextField
             id="skill"
             label="Edit Skill"
             value={this.state.skill}
             onChange={this.handleChangeFor('skill')}
             margin="normal"
-             />
+             /> */}
               <TextField
             id="bio"
             label="Edit Bio"
@@ -104,12 +140,19 @@ class MyProfileView extends Component {
                 <Typography component="p">
                   {this.props.golfer.bio}
                 </Typography>
+                <Typography component='img'>
+                  {/* {drink} */}
+                </Typography>
                 <IconButton onClick = {this.handleClickEdit}><Edit /></IconButton>
               </Paper>
           </div>
       )
     }
   }
+
+ 
+
+
 
     render() {
         return (

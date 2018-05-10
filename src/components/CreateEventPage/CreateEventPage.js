@@ -42,6 +42,7 @@ eventDetails = (event) => {
     render() {
         return(
             <div>
+                <div>
                 <TextField
                 id="name"
                 label="Event Name"
@@ -49,6 +50,8 @@ eventDetails = (event) => {
                 onChange={this.handleChangeFor('name')}
                 margin="normal"
                  />
+                 </div>
+                 <div>
                  <TextField
                  id="course"
                  label="Golf Course Name" 
@@ -56,6 +59,8 @@ eventDetails = (event) => {
                  onChange={this.handleChangeFor('course')}
                  margin="normal"
                  />
+                 </div>
+                 <div>
                  <TextField 
                  id="address"
                  label="Golf Course Address"
@@ -63,6 +68,8 @@ eventDetails = (event) => {
                  onChange={this.handleChangeFor('address')}
                  margin="normal"
                  />
+                 </div>
+                 <div>
                  <TextField 
                  id="phone"
                  label="Golf Course Phone"
@@ -70,6 +77,8 @@ eventDetails = (event) => {
                  onChange={this.handleChangeFor('phone')}
                  margin="normal"
                  />
+                 </div>
+                 <div>
                  <TextField
                     id="date"
                     label="Event Date"
@@ -81,6 +90,8 @@ eventDetails = (event) => {
                         shrink: true,
                       }}
                  />
+                 </div>
+                 <div>
                  <TextField
                     id="time"
                     label="Tee-Time"
@@ -92,6 +103,8 @@ eventDetails = (event) => {
                         shrink: true,
                       }}
                 />
+                </div>
+                <div>
                  {/* <TextField 
                  id="teeTime"
                  label="Tee Time"
@@ -99,9 +112,10 @@ eventDetails = (event) => {
                  onChange={this.handleChangeFor('teeTime')}
                  margin="normal"
                  /> */}
-                 <Button onClick={this.eventDetails}>
+                 <Button variant="raised" color="secondary" onClick={this.eventDetails}>
                     Create Event
                  </Button>
+                 </div>
             </div>
         )
     }
