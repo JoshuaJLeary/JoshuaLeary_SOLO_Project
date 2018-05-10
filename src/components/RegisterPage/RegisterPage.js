@@ -4,6 +4,11 @@ import Input, { InputLabel } from 'material-ui/Input';
 import { MenuItem } from 'material-ui/Menu';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import Select from 'material-ui/Select';
+import IconButton from 'material-ui/IconButton';
+import Button from 'material-ui/Button';
+import TextField from 'material-ui/TextField';
+import { ThumbUp } from '@material-ui/icons';
+import { ThumbDown } from '@material-ui/icons';
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -18,8 +23,8 @@ class RegisterPage extends Component {
         city: '',
         skill: '',
         bio: '',
-        alcohol: false,
-        tobacco: false,
+        alcohol: true,
+        tobacco: true,
       }
     };
   }
@@ -61,6 +66,46 @@ class RegisterPage extends Component {
     }
   }
 
+  handleAlcoholTrue = () => {
+    console.log(this.state.golfProfile.alcohol);
+    this.setState({
+      golfProfile: {
+        ...this.state.golfProfile,
+        alcohol: true
+      }
+      
+    })
+}
+
+  handleAlcoholFalse = () => {
+    console.log(this.state.golfProfile.alcohol);
+    this.setState({
+      golfProfile: {
+        ...this.state.golfProfile,
+        alcohol: false
+      }
+    })
+  }
+
+  handleTobaccoTrue = () => {
+    this.setState({
+      golfProfile: {
+        ...this.state.golfProfile,
+        tobacco: false
+      }
+    })
+  }
+
+  handleTobaccoFalse = () => {
+    this.setState({
+      golfProfile: {
+        ...this.state.golfProfile,
+        alcohol: false
+      }
+    })
+  }
+
+
   handleInputChangeFor = propertyName => (event) => {
     this.setState({
       ...this.state,
@@ -92,51 +137,42 @@ class RegisterPage extends Component {
     return (
       <div>
         {this.renderAlert()}
-        <form onSubmit={this.registerUser}>
           <h1>Create Profile</h1>
           <div>
-            <label htmlFor="username">
-              Username:
-              <input
-                type="text"
-                name="username"
+              <TextField
+                id="username"
+                label="Username"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
+                margin="normal"
               />
-            </label>
           </div>
           <div>
-            <label htmlFor="password">
-              Password:
-              <input
-                type="password"
-                name="password"
+              <TextField
+                id="password"
+                label="Password"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
+                margin="normal"
               />
-            </label>
           </div>
           <div>
-            <label htmlFor="name">
-              Name:
-              <input
-                type="text"
-                name="name"
+              <TextField
+                id="name"
+                label="Name"
                 value={this.state.golfProfile.name}
                 onChange={this.handleInputChangeFor('name')}
+                margin="normal"
               />
-            </label>
           </div>
           <div>
-            <label htmlFor="city">
-              City:
-              <input
-                type="text"
-                name="city"
+              <TextField
+                id="city"
+                label="City"
                 value={this.state.golfProfile.city}
                 onChange={this.handleInputChangeFor('city')}
+                margin="normal"
               />
-            </label>
            <div>
            <InputLabel htmlFor="skill_level">Skill Level</InputLabel>
            <Select
@@ -165,40 +201,39 @@ class RegisterPage extends Component {
             </label> */}
           </div>
           <div>
-            <label htmlFor="bio">
-              Bio:
-              <input
-                type="text"
-                name="bio"
+              <TextField
+                id="bio"
+                label="Tell Us About Yourself"
                 value={this.state.golfProfile.bio}
                 onChange={this.handleInputChangeFor('bio')}
+                margin="normal"
               />
-            </label>
           </div>
           <div>
             <label htmlFor="alcohol">
-              Alcohol:
-              <input
+              Alcohol:<IconButton onClick={this.handleAlcoholTrue}><ThumbUp/></IconButton><IconButton onClick={this.handleAlcoholFalse}><ThumbDown/></IconButton>
+              {/* <input
                 type="boolean"
                 name="alocohol"
                 value={this.state.golfProfile.alcohol}
                 onChange={this.handleInputChangeFor('alcohol')}
-              />
+              /> */}
             </label>
           </div>
           <div>
             <label htmlFor="tobacco">
-              Tobacco:
-              <input
+              Tobacco:<IconButton onClick={this.handleTobaccoTrue}><ThumbUp /></IconButton><IconButton onClick={this.handleTobaccoFalse}><ThumbDown /></IconButton>
+              {/* <input
                 type="boolean"
                 name="tobacco"
                 value={this.state.golfProfile.tobacco}
                 onChange={this.handleInputChangeFor('tobacco')}
-              />
+              /> */}
             </label>
           </div>
           </div>
           <div>
+          <Button onClick={this.registerUser}>Create Profile</Button>
             <input
               type="submit"
               name="submit"
@@ -206,7 +241,6 @@ class RegisterPage extends Component {
             />
             <Link to="/home">Cancel</Link>
           </div>
-        </form>
       </div>
     );
   }

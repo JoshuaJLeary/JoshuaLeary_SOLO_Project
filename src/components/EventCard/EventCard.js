@@ -6,6 +6,7 @@ import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
+import moment from 'moment';
 import '../EventCard/EventCard.css';
 
 
@@ -41,6 +42,9 @@ class EventCard extends Component {
                         </div>
                         <div>
                             <p>{this.props.event.couse_phone}</p>
+                        </div>
+                        <div>
+                            <p>{moment(this.props.event.event_date).format('MM/DD/YYYY')}</p>
                         </div>
                         <div>
                             <p>{this.props.event.tee_time}</p>

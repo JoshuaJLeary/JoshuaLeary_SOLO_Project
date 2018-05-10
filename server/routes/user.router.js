@@ -19,7 +19,6 @@ router.get('/profile', (req, res) => {
     const queryText = `SELECT name, city, skill, bio, alcohol, tobacco FROM person WHERE id = $1`;
   pool.query(queryText, [req.user.id])
   .then( (result) => {
-    console.log('result.rows:', result.rows);
     res.send(result.rows);
   })
   .catch( (error) => {
@@ -37,7 +36,7 @@ router.get('/events', (req, res) => {
     const queryText = `SELECT * FROM event`;
     pool.query(queryText)
     .then( (result) => {
-      console.log('result.rows:', result.rows);
+      // console.log('result.rows:', result.rows);
       res.send(result.rows);
     })
     .catch( (error) => {
@@ -53,7 +52,7 @@ router.get('/myEvent', (req, res) => {
     const queryText = `SELECT attendee.id, event.event_name, event.course_name, event.course_address, event.course_phone, event.tee_time FROM attendee JOIN event ON event.id = attendee.event_id JOIN person ON person.id = attendee.person_id WHERE person.id = $1`;
   pool.query(queryText, [req.user.id])
   .then( (result) => {
-    console.log('result.rows:', result.rows);
+    // console.log('result.rows:', result.rows);
     res.send(result.rows);
   })
   .catch( (error) => {
@@ -81,7 +80,7 @@ router.post('/register', (req, res, next) => {
     .catch((err) => { next(err); });
 });
 
-// await POST posts created events and populates attendee table with person_id and adds new created event_id
+// await POST posts created events and populates attendee table with person_id and adds newly created event_id
 router.post('/event', (req, res, next) => {
   console.log(req.body);
   const event = req.body;
@@ -112,27 +111,40 @@ router.post('/event', (req, res, next) => {
 
 });
 
+// POST route to join a single event
+
 router.post('/attend', (req, res, next) => {
-  console.log('req.body:',req.body);
+  // console.log('req.body:',req.body);
   if(req.isAuthenticated()){
     const attending = req.body;
-    console.log('req.body2:', attending);
-    let queryText = `INSERT INTO attendee (person_id, event_id) VALUES ($1, $2)`;
-    pool.query(queryText, [req.user.id, attending.id])
-    .then( () => {res.sendStatus(201); })
-    .catch( (error) => {
-      if(error.constraint === 'uc_tab'){
-        res.sendStatus(501);
-      }else {
-        console.log('error in POST /attend:',error);
-      res.sendStatus(500);
+    let queryText = `SELECT event_id FROM attendee WHERE event_id = $1`;
+    pool.query(queryText, [attending.id])
+    .then( (result) => {
+      console.log('result.rows:', result.rows.length);
+      if(result.rows.length < 4){
+        let queryText = `INSERT INTO attendee (person_id, event_id) VALUES ($1, $2)`;
+          pool.query(queryText, [req.user.id, attending.id])
+          .then( () => {res.sendStatus(201); })
+          .catch( (error) => {
+            if(error.constraint === 'uc_tab'){
+                res.sendStatus(501);
+        }else {
+          console.log('error in POST /attend:',error);
+          res.sendStatus(500);
       }      
     })
-  }else {
-    res.sendStatus(403);
-  }
+      }else {
+        res.sendStatus(500);
+      }
+    })          
+        }else {
+          res.sendStatus(403);
+        }
+    
+  });
 
-})
+
+//UPDATE My Profile 
 
 router.put('/updateProfile', (req, res, next) => {
   console.log('req.body', req.body);

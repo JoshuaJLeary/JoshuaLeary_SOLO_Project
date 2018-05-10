@@ -14,15 +14,14 @@ function* attendEventSaga(action) {
         withCredentials: true,
     }
     try{
-        console.log('something');
         yield call(axios.post, '/api/user/attend', action.payload);
         console.log('action.payload:', action.payload);
         yield put({
-            type: 'GET_EVENT'
+            type: 'GET_MY_EVENTS'
         })
     }catch(error) {
         console.log('error in POST attendEventSaga:', error);
-        alert('You are already attending this event!');
+        // alert('You are already attending this event!');
 
     }
 }
