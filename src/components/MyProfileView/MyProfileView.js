@@ -13,6 +13,7 @@ import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
 import beer from '../../styles/images/beer.svg';
+import '../MyProfileView/MyProfileView.css';
 
 class MyProfileView extends Component {
   constructor(props) {
