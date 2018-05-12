@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import '../EventItem/EventItem.css';
 
 
 class EventItem extends Component {
     render() {
         return (
             <div>
-                <h4>{this.props.golfer.name}</h4>
+                <strong>{this.props.golfer.name}</strong>
                 <p>{this.props.golfer.city}</p>
                 <p>{this.props.golfer.skill}</p>
                 <p>{this.props.golfer.bio}</p>

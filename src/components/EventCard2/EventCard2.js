@@ -10,6 +10,8 @@ import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import EventItem from '../EventItem/EventItem';
 import Button from 'material-ui/Button';
+import '../EventCard2/EventCard2.css';
+
 
 const mapStateToProps = state => ({state});
 
@@ -49,13 +51,13 @@ class EventCard2 extends Component {
         const { classes } = this.props;
         return (
             <div className={classes.root}>
-      <ExpansionPanel>
-        <ExpansionPanelSummary className="expansion" expandIcon={<ExpandMoreIcon />}>
+      <ExpansionPanel className="expansionPanel">
+        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
           <Typography className={classes.heading}>{this.props.event.event_name}</Typography>
           <span><Typography>{this.props.event.course_name}</Typography></span>
         </ExpansionPanelSummary>
-        <Button variant="raised" color="secondary" onClick={() => this.handleJoinEvent(this.props.event)}>Join</Button>
-        <ExpansionPanelDetails>
+         <Button variant="raised" color="secondary" onClick={() => this.handleJoinEvent(this.props.event)}>Join</Button>
+        <ExpansionPanelDetails style={{margin: '25px'}}>
           <Typography>
             {someGolfer}
           </Typography>
