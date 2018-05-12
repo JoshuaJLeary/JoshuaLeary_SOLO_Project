@@ -59,10 +59,26 @@ router.get('/myEvent', (req, res) => {
     console.log('error in Get', error);
     res.sendStatus(500);
   })
-  }else {
+  } else {
     res.sendStatus(403);
   }
   
+});
+
+router.get('/golfers', (req, res) => {
+  if (req.isAuthenticated()) {
+    const queryText = `SELECT attendee.person_id, attendee.event_id, person.id, person.name, person.city, person.skill, person.bio, person.alcohol, person.tobacco FROM attendee JOIN person on person.id = attendee.person_id`;
+    pool.query(queryText)
+    .then( (result) => {
+      res.send(result.rows);
+    })
+    .catch( (error) => {
+      console.log('error in GET', error);
+      res.sendStatus(500);
+    })
+  } else {
+    res.sendStatus(403);
+  }
 });
 
 // Handles POST request with new user data
@@ -184,6 +200,23 @@ router.delete('/:id', (req, res, next) => {
   }
 });
 
+router.delete('/cancel/:id', (req, res, next) => {
+  console.log('is this working?');
+  if (req.isAuthenticated()) {
+    let queryText = `DELETE FROM event WHERE id = $1`;
+    pool.query(queryText, [req.params.id])
+    .then( () => {
+      res.sendStatus(200);
+    })
+    .catch( (error) => {
+      console.log('error in DELETE event', error);
+      res.sendStatus(500);
+
+    })
+  } else {
+    res.sendStatus(403);
+  }
+});
 
 
 // Handles login form authenticate/login POST

@@ -1,4 +1,8 @@
 .myEventCard {
-    margin: 0 0 50px 0;
     padding: 0px;
+    width: 100%;
+}
+
+.cardText {
+    text-align: center;
 }

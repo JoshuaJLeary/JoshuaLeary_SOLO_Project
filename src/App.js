@@ -17,7 +17,7 @@ import CreateEventPage from './components/CreateEventPage/CreateEventPage';
 
 const App = () => (
   <div>
-    <Header title="4sum" />
+    <Header title="Golf 2gether" />
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />

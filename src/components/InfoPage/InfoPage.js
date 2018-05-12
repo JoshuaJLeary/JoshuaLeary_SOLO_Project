@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import CreateEventButton from '../CreateEventButton/CreateEventButton';
-import EventCard from '../EventCard/EventCard';
+import EventCard2 from '../EventCard2/EventCard2';
 
 
 const mapStateToProps = state => ({
@@ -16,6 +16,8 @@ class InfoPage extends Component {
   componentDidMount() {
     this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
     this.props.dispatch({type: 'GET_EVENT'});
+    this.props.dispatch({type: 'GET_ATTENDING'});
+
   }
 
   componentDidUpdate() {
@@ -27,7 +29,7 @@ class InfoPage extends Component {
   render() {
     let content = null;
     let showEvents = this.props.state.createdEvent.map((event) => {
-      return <EventCard event={event}/>
+      return <EventCard2 event={event}/>
     })
 
     if (this.props.user.userName) {

@@ -9,6 +9,8 @@ import attendEventSaga from './attendEventSaga';
 import joinEvent from './attendEventSaga';
 import updateSaga from './updateMyProfileSaga';
 import leaveEventSaga from './leaveEventSaga';
+import cancelEventSaga from './cancelEventSaga';
+import getGolfersAttending from './expansionSaga';
 
 
 export default function* rootSaga() {
@@ -22,6 +24,8 @@ export default function* rootSaga() {
     joinEvent(),
     updateSaga(),
     leaveEventSaga(),
+    cancelEventSaga(),
+    getGolfersAttending(),
     // watchIncrementAsync()
   ]);
 }

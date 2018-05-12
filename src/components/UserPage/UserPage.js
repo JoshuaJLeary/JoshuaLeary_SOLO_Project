@@ -41,40 +41,36 @@ class UserPage extends Component {
   render() {
     let content = null;
 
+    // let showMyGolfers = this.props.state.attendingEvent.map((player) => {
+      
+    // })
+
     let showMyEvents = this.props.state.myEvents.map((event) => {
       console.log(this.props);
       console.log('event:', event);
       return <MyEventCard event={event}/>
     })
 
-    if (this.props.user.userName) {
-      content = (
-        <div>
-          <h1
-            id="welcome"
-          >
-            Welcome, { this.props.user.userName }
-          </h1>
-          <div>
-            <MyProfile />
-            </div>
-            <div>
-            <h3>Here is a list of your upcoming Events:</h3>
-              {showMyEvents}
-              </div>
-          <button
-            onClick={this.logout}
-          >
-            Log Out
-          </button>
-        </div>
-      );
-    }
-
     return (
       <div>
         <Nav />
         { content }
+ 
+        { this.props.user.userName &&
+          <div className="userPage__container">
+            <h1 id="welcome">Welcome, { this.props.user.userName }</h1>
+
+            <MyProfile />
+
+            <h3>Here is a list of your upcoming Events:</h3>
+
+            {showMyEvents}
+
+            <button type="button" onClick={this.logout}>
+              Log Out
+            </button>
+          </div>
+        }
       </div>
     );
   }

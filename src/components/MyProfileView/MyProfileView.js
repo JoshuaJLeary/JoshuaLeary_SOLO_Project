@@ -6,9 +6,7 @@ import { MenuItem } from 'material-ui/Menu';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import Select from 'material-ui/Select';
 import { Edit } from '@material-ui/icons';
-import { Check } from '@material-ui/icons';
-import { Close } from '@material-ui/icons';
-import { Smoking } from '@material-ui/icons';
+import { Check, Close, Smoking } from '@material-ui/icons';
 import Paper from 'material-ui/Paper';
 import MyProfile from '../MyProfile/MyProfile';
 import Button from 'material-ui/Button';
@@ -62,7 +60,7 @@ class MyProfileView extends Component {
   showAlcohol = () => {
     console.log('help Kam...Help');
     let drink;
-    if(this.props.golfer.alcohol === false){
+    if (this.props.golfer.alcohol === false){
       drink = <img src={beer}/>
       console.log('drink:',drink);
     } else {
@@ -71,10 +69,9 @@ class MyProfileView extends Component {
   }
   
   showEditing = () => {
-   
-    if(this.state.isEditing){
+    if (this.state.isEditing) {
       console.log('this.state:', this.props.golfer);
-      return(
+      return (
         <div>
             <TextField
             id="name"
@@ -124,7 +121,7 @@ class MyProfileView extends Component {
             <IconButton onClick = {this.handleClickEdit}><Close /></IconButton>
           </div>
       )
-    }else {
+    } else {
       return (
         <div>
           <Paper className="profile">

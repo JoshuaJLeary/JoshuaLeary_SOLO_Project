@@ -12,7 +12,23 @@ import { connect } from 'react-redux';
 import '../MyEventCard/MyEventCard.css';
 
 
-class MyEventCard extends Component {
+const styles = theme => ({
+    root: {
+      flexGrow: '1',
+      width: '50%',
+      margin: 'auto',
+    },
+    paper: {
+      height: '140px',
+      width: '100px',
+    },
+    control: {
+      padding: theme.spacing.unit * 2,
+    },
+  });
+  
+
+class MyEventCard extends Component {    
 
 cancelEvent = () => {
     this.props.dispatch({
@@ -23,13 +39,14 @@ cancelEvent = () => {
 
     render() {
         return (
-            <Card className="myEventCard">
-              <Grid zeroMinWidth container spacing={16}>
+              <Grid container spacing={16}>
+                <Card className="myEventCard">
+
                   {/* <Grid item xs={2}>
                     <div id="deviceMore"><Button ><Icon>expand_more</Icon></Button></div>
                   </Grid> */}
-                  <Grid className="myEventCards"item xs={8}>
-                      <div className="deviceName">
+                  <Grid style={styles.root} className="myEventCards"item xs={8}>
+                      <div className="cardText">
                       <div>
                         <h4>{this.props.event.event_name}</h4>
                         </div>
@@ -59,8 +76,9 @@ cancelEvent = () => {
                   {/* <Grid item xs={2}>
                     <div id="deviceDelete"><Button color="secondary"><Icon>delete</Icon></Button></div>
                   </Grid> */}
+                </Card>
+
               </Grid>
-            </Card>
         )
     }
 }
@@ -70,4 +88,6 @@ const mapStateToProps = state => ({
     state: state
   });
 
-export default connect(mapStateToProps)(MyEventCard);
+  const eventCard = withStyles(styles)(MyEventCard);
+
+export default connect(mapStateToProps)(eventCard);

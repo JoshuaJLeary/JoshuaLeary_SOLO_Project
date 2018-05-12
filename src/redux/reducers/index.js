@@ -4,6 +4,7 @@ import login from './loginReducer';
 import golfProfile from './golferReducer';
 import createdEvent from './eventReducer';
 import myEvents from './myEventReducer';
+import attendingReducer from './attendingReducer';
 
 const store = combineReducers({
   user,
@@ -11,6 +12,7 @@ const store = combineReducers({
   golfProfile,
   createdEvent,
   myEvents,
+  attendingReducer,
 });
 
 export default store;

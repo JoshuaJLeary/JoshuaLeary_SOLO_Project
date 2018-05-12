@@ -67,7 +67,7 @@ class RegisterPage extends Component {
   }
 
   handleAlcoholTrue = () => {
-    console.log(this.state.golfProfile.alcohol);
+    console.log('alcohol:',this.state.golfProfile.alcohol);
     this.setState({
       golfProfile: {
         ...this.state.golfProfile,
@@ -78,7 +78,7 @@ class RegisterPage extends Component {
 }
 
   handleAlcoholFalse = () => {
-    console.log(this.state.golfProfile.alcohol);
+    console.log('alochol:',this.state.golfProfile.alcohol);
     this.setState({
       golfProfile: {
         ...this.state.golfProfile,
@@ -88,19 +88,21 @@ class RegisterPage extends Component {
   }
 
   handleTobaccoTrue = () => {
+    console.log('tobacco:', this.state.golfProfile.tobacco);
     this.setState({
       golfProfile: {
         ...this.state.golfProfile,
-        tobacco: false
+        tobacco: true
       }
     })
   }
 
   handleTobaccoFalse = () => {
+    console.log('tobacco:', this.state.golfProfile.tobacco);
     this.setState({
       golfProfile: {
         ...this.state.golfProfile,
-        alcohol: false
+        tobacco: false
       }
     })
   }

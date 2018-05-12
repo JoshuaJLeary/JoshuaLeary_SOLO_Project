@@ -6,11 +6,21 @@ import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
+import IconButton from 'material-ui/IconButton';
+import { Delete } from '@material-ui/icons';
 import moment from 'moment';
 import '../EventCard/EventCard.css';
 
 
 class EventCard extends Component {
+
+    handleCancelEvent = () => {
+        console.log(this.props.event);
+        this.props.dispatch({
+            type: 'CANCEL_EVENT',
+            payload: this.props.event
+        })
+    } 
 
     handleJoinEvent = (event) => {
         // event.preventDefault();
@@ -54,9 +64,9 @@ class EventCard extends Component {
                   <Grid item xs={12}>
                       <div id="join"><Button variant="raised" color="secondary" onClick={() => this.handleJoinEvent(this.props.event)}>Join</Button></div>
                   </Grid>
-                  {/* <Grid item xs={2}>
-                    <div id="deviceDelete"><Button color="secondary"><Icon>delete</Icon></Button></div>
-                  </Grid> */}
+                  <Grid item xs={2}>
+                    <div id="deviceDelete"><IconButton color="dark" onClick={this.handleCancelEvent}><Delete /></IconButton></div>
+                  </Grid>
               </Grid>
             </Card>
            
