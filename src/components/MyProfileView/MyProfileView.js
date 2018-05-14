@@ -58,14 +58,14 @@ class MyProfileView extends Component {
   } 
 
   showAlcohol = () => {
-    console.log('help Kam...Help');
-    let drink;
-    if (this.props.golfer.alcohol === false){
-      drink = <img src={beer}/>
-      console.log('drink:',drink);
-    } else {
-      drink = <p></p>
-    }
+    // console.log('help Kam...Help');
+    // let drink;
+    // if (this.props.golfer.alcohol === false){
+    //   drink = <img src={beer}/>
+    //   console.log('drink:',drink);
+    // } else {
+    //   drink = <p></p>
+    // }
   }
   
   showEditing = () => {
