@@ -17,7 +17,7 @@ class CreateEventButton extends Component {
                 <h3>
                 Create Event:
                 <Link to="/create">
-                <Button variant="fab" color="primary" aria-label="add">
+                <Button variant="fab" color="secondary" aria-label="add">
                 <AddIcon />
                 </Button>
                 </Link>

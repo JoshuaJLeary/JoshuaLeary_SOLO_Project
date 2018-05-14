@@ -139,7 +139,7 @@ class RegisterPage extends Component {
     return (
       <div>
         {this.renderAlert()}
-          <h1>Create Profile</h1>
+          <h1 className="cp" >Create Profile</h1>
           <div>
               <TextField
                 id="username"
@@ -235,7 +235,7 @@ class RegisterPage extends Component {
           </div>
           </div>
           <div>
-          <Button variant="raised" color="primary" onClick={this.registerUser}>Create Profile</Button>
+          <Button variant="raised" color="secondary" onClick={this.registerUser}>Create Profile</Button>
             {/* <input
               type="submit"
               name="submit"

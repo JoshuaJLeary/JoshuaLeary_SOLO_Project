@@ -17,7 +17,7 @@ import CreateEventPage from './components/CreateEventPage/CreateEventPage';
 
 const App = () => (
   <div>
-    <Header title="Golf 2gether" />
+    <Header className="golf" title="Golf 2gether" />
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />

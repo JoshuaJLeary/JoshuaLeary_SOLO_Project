@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
+import Button from 'material-ui/Button';
 
 
 const mapStateToProps = state => ({
@@ -63,7 +64,6 @@ class LoginPage extends Component {
     return (
       <div>
         { this.renderAlert() }
-        <form onSubmit={this.login}>
           <h1>Login</h1>
           <div>
             <label htmlFor="username">
@@ -88,14 +88,13 @@ class LoginPage extends Component {
             </label>
           </div>
           <div>
-            <input
-              type="submit"
-              name="submit"
-              value="Log In"
-            />
+            <Button variant="raised" color="secondary" onClick={this.login}>
+             Sumbit
+            </Button>
+            <div>
             <Link to="/register">Register</Link>
+            </div>
           </div>
-        </form>
       </div>
     );
   }

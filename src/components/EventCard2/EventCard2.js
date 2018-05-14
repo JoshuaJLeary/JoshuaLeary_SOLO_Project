@@ -10,6 +10,7 @@ import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import EventItem from '../EventItem/EventItem';
 import Button from 'material-ui/Button';
+import moment from 'moment';
 import '../EventCard2/EventCard2.css';
 
 
@@ -54,10 +55,31 @@ class EventCard2 extends Component {
       <ExpansionPanel className="expansionPanel">
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
           <Typography className={classes.heading}>{this.props.event.event_name}</Typography>
-          <span><Typography>{this.props.event.course_name}</Typography></span>
         </ExpansionPanelSummary>
          <Button variant="raised" color="secondary" onClick={() => this.handleJoinEvent(this.props.event)}>Join</Button>
-        <ExpansionPanelDetails style={{margin: '25px'}}>
+        <ExpansionPanelDetails>
+        <Typography>
+         <div>
+            <h4>{this.props.event.event_name}</h4>
+            </div>
+            <div>
+                <p>{this.props.event.course_name}</p>
+            </div>
+            <div>
+                <p>{this.props.event.course_address}</p>
+            </div>
+            <div>
+                <p>{this.props.event.couse_phone}</p>
+            </div>
+            <div>
+                <p>{moment(this.props.event.event_date).format('MM/DD/YYYY')}</p>
+            </div>
+            <div>
+                <p>{this.props.event.tee_time}</p>
+            </div>
+        </Typography>
+        </ExpansionPanelDetails>
+        <ExpansionPanelDetails>
           <Typography>
             {someGolfer}
           </Typography>

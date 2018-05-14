@@ -5,7 +5,8 @@
 body {
     padding: 0;
     /* margin: 0; */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: blueviolet;
 }
 
 .instructions h1 {
@@ -14,9 +15,10 @@ body {
 }
 
 .instructions {
-    background-color: #00acb0;
+    background-color: #00FF7F;
     padding: 5px;
-    color: #ece7e7;
+    color: blueviolet;
+    text-align: center;
 }
 
 form {
@@ -54,9 +56,10 @@ input[type="submit"] {
 }
 
 .navbar {
-  background-color: #00acb0;
+  background-color: #00FF7F;
   width: 100%;
   border-radius: 0px;
+  text-align: center;
 }
 
 ul {
@@ -72,7 +75,7 @@ li {
 
 li a {
     display: block;
-    color: white;
+    color: blueviolet;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -87,6 +90,19 @@ li a:hover {
 
 .userPage__container {
     padding: 1em;
+}
+
+.listName {
+    color: white;
+    text-shadow: black;
+}
+
+.golf {
+    color: blueviolet;
+}
+
+.cp {
+    color: white;
 }
 
 /* .expansionPanel {

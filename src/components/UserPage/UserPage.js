@@ -62,7 +62,7 @@ class UserPage extends Component {
 
             <MyProfile />
 
-            <h3>Here is a list of your upcoming Events:</h3>
+            <h3 className="listName">Here is a list of your upcoming Events:</h3>
 
             {showMyEvents}
 
