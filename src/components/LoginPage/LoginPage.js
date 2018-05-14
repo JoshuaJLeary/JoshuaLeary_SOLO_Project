@@ -89,7 +89,7 @@ class LoginPage extends Component {
           </div>
           <div>
             <Button variant="raised" color="secondary" onClick={this.login}>
-             Sumbit
+             Submit
             </Button>
             <div>
             <Link to="/register">Register</Link>
