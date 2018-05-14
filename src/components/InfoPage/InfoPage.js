@@ -35,9 +35,9 @@ class InfoPage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <p>
+          {/* <p>
             Golf Events
-          </p>
+          </p> */}
           <CreateEventButton />
 
         </div>

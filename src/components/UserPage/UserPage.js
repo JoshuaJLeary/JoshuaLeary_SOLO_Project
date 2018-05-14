@@ -58,7 +58,7 @@ class UserPage extends Component {
  
         { this.props.user.userName &&
           <div className="userPage__container">
-            <h1 id="welcome">Welcome, { this.props.user.userName }</h1>
+            {/* <h1 id="welcome">Welcome, { this.props.user.userName }</h1> */}
 
             <MyProfile />
 

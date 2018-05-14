@@ -58,7 +58,7 @@ class EventCard2 extends Component {
         </ExpansionPanelSummary>
          <Button variant="raised" color="secondary" onClick={() => this.handleJoinEvent(this.props.event)}>Join</Button>
         <ExpansionPanelDetails>
-        <Typography>
+        <Typography >
          <div>
             <h4>{this.props.event.event_name}</h4>
             </div>

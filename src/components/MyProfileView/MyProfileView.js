@@ -126,7 +126,7 @@ class MyProfileView extends Component {
       return (
         <div>
           <Paper className="profile">
-                <Typography variant="headline" component="h2">
+                <Typography  variant="headline" component="h2">
                   {this.props.golfer.name}
                 </Typography>
                 <Typography component="p">
@@ -135,7 +135,7 @@ class MyProfileView extends Component {
                 <Typography component="p">
                   {this.props.golfer.skill}
                 </Typography>
-                <Typography component="p">
+                <Typography  component="p">
                   {this.props.golfer.bio}
                 </Typography>
                 <Typography component='img'>

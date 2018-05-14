@@ -6,7 +6,7 @@ body {
     padding: 0;
     /* margin: 0; */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: blueviolet;
+    background-color: rgb(158, 224, 255);
 }
 
 .instructions h1 {
@@ -17,7 +17,7 @@ body {
 .instructions {
     background-color: #00FF7F;
     padding: 5px;
-    color: blueviolet;
+    color: black;
     text-align: center;
 }
 
@@ -75,7 +75,7 @@ li {
 
 li a {
     display: block;
-    color: blueviolet;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -93,16 +93,24 @@ li a:hover {
 }
 
 .listName {
-    color: white;
+    color: black;
     text-shadow: black;
 }
 
 .golf {
-    color: blueviolet;
+    color: black;
 }
 
 .cp {
-    color: white;
+    color: black;
+}
+
+.ce {
+    color: black;
+}
+
+.profile {
+    background-color: blueviolet;
 }
 
 /* .expansionPanel {

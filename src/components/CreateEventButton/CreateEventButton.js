@@ -14,7 +14,7 @@ class CreateEventButton extends Component {
     render() {
         return(
             <div>
-                <h3>
+                <h3 className="ce">
                 Create Event:
                 <Link to="/create">
                 <Button variant="fab" color="secondary" aria-label="add">
