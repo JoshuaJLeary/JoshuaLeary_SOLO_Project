@@ -1,85 +1,58 @@
-# Express/Passport with React
-This version uses React to control the login requests and redirection in coordination with client-side routing.
+# Golf 2Gether
 
-We **STONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
+Managing a busy work and personal life often leaves little time to golf. Golf 2Gether is a web application that allows golfers to create events for other golfers to join, and join events other golfers have created. 
 
-## Prerequisites
+# Getting Started
 
-Before you get started, make sure you have the following software installed on your computer:
+Required:
+- Node.js
+- Postico and PostgreSQL
+- Nodemon
 
-- [Node.js](https://nodejs.org/en/)
-- [PostrgeSQL](https://www.postgresql.org/)
-- [Nodemon](https://nodemon.io/)
+To Run:
+- npm install
+- npm run server
+- npm run client
 
-## Create database and table
+SQL:
 
-Create a new database called `prime_app` and create a `person` table:
-
-```SQL
-CREATE TABLE person (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR (80) UNIQUE NOT NULL,
-    password VARCHAR (1000) NOT NULL
+...
+CREATE TABLE "person" (
+	"id" serial PRIMARY KEY,
+	"username" varchar(80) NOT NULL UNIQUE,
+	"password" varchar(1000) NOT NULL,
+	"name" varchar(80) NOT NULL,
+	"city" varchar(80) NOT NULL,
+	"skill" varchar(80) NOT NULL,
+	"bio" varchar(200) NOT NULL,
+	"alcohol" BOOLEAN NOT NULL DEFAULT 'false',
+	"tobacco" BOOLEAN NOT NULL DEFAULT 'false'
 );
-```
 
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
+CREATE TABLE "event" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"event_name" varchar(100) NOT NULL,
+	"course_name" varchar(100) NOT NULL,
+	"course_address" varchar(100) NOT NULL,
+	"course_phone" VARCHAR(80) NOT NULL,
+	"event_date" DATE NOT NULL default CURRENT_DATE,
+	"tee_time" VARCHAR(80) NOT NULL
+);
 
-## Download (Don't Clone) This Repository
+CREATE TABLE "attendee" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"person_id" INT REFERENCES "person",
+	"event_id" INT REFERENCES "event",
+	CONSTRAINT uc_tab UNIQUE (person_id, event_id),
+);
+...
 
-* Don't Fork or Clone. Instead, click the `Clone or Download` button and select `Download Zip`.
-* Unzip the project and start with the code in that folder.
-* Create a new GitHub project and push this code to the new repository.
+### Next Steps:
+- Add more styling to the application, specifically creating a reactive layout
+- Incorporate Nodemailer to send email messages to allow golfers to communicate
+- Communicate with local golf courses to post their upcoming tournaments through Golf 2Gether
 
-## Development Setup Instructions
+### Created by Joshua J Leary
 
-* Run `npm install`
-* Create a `.env` file at the root of the project and paste this line into the file:
-    ```
-    SERVER_SESSION_SECRET=superDuperSecret
-    ```
-    While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
-* Start postgres if not running already by using `brew services start postgresql`
-* Run `npm run dev`
-* Navigate to `localhost:3000`
 
-## Debugging
 
-To debug, you will need to run the client-side separately from the server. Start the client by running the command `npm run dev:client`. Start the debugging server by selecting the Debug button.
-
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
-
-Then make sure `Launch Program` is selected from the dropdown, then click the green play arrow.
-
-![VSCode Debug Bar](documentation/images/vscode-debug-bar.png)
-
-## Linting
-
-The Airbnb ESLint for react is a part of this project. If you would like to take advantage of this in VS Code, you can add the `ESLint` extension. Click the `Extensions` button (the button right below the `Debug`) and search for `ESLint`. Click `install` for the first result and then click `Reload`. Then it should be all set up!
-
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
-
-## Production Build
-
-This is the build Heroku will run, but during development, you will likely not need to use it.
-
-* Start postgres if not running already by using `brew services start postgresql`
-* Run `npm start`
-* Navigate to `localhost:5000`
-
-## Lay of the Land
-
-* `src/` contains the React application
-* `public/` contains static assets for the client-side
-* `build/` after you build the project, contains the transpiled code from `src/` and `public/` that will be viewed on the production site
-* `server/` contains the Express App
-
-## Deployment
-
-1. Create a new Heroku project
-1. Link the Heroku project to the project GitHub Repo
-1. Create an Herkoku Postgres database
-1. Connect to the Heroku Postgres database from Postico
-1. Create the necessary tables
-1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-1. In the deploy section, select manual deploy
