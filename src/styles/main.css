@@ -6,7 +6,11 @@ body {
     padding: 0;
     /* margin: 0; */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: rgb(158, 224, 255);
+    background: url(https://media.golfdigest.com/photos/55ce3b614759c60c08236f2e/master/pass/the-prince-golf-course-6.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;     
 }
 
 .instructions h1 {
@@ -112,6 +116,8 @@ li a:hover {
 .profile {
     background-color: blueviolet;
 }
+
+
 
 /* .expansionPanel {
     margin: 12px;
