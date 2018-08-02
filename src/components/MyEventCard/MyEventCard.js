@@ -4,7 +4,6 @@ import { withStyles } from 'material-ui/styles';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
-import Grid from 'material-ui/Grid';
 import moment from 'moment';
 import IconButton from 'material-ui/IconButton';
 import { Delete } from '@material-ui/icons';
@@ -12,20 +11,20 @@ import { connect } from 'react-redux';
 import '../MyEventCard/MyEventCard.css';
 
 
-const styles = theme => ({
-    root: {
-      flexGrow: '1',
-      width: '50%',
-      margin: 'auto',
-    },
-    paper: {
-      height: '140px',
-      width: '100px',
-    },
-    control: {
-      padding: theme.spacing.unit * 2,
-    },
-  });
+// const styles = theme => ({
+//     root: {
+//       flexGrow: '1',
+//       width: '50%',
+//       margin: 'auto',
+//     },
+//     paper: {
+//       height: '140px',
+//       width: '100px',
+//     },
+//     control: {
+//       padding: theme.spacing.unit * 2,
+//     },
+//   });
   
 
 class MyEventCard extends Component {    
@@ -39,13 +38,11 @@ cancelEvent = () => {
 
     render() {
         return (
-              <Grid container spacing={16}>
                 <Card className="myEventCard">
 
                   {/* <Grid item xs={2}>
                     <div id="deviceMore"><Button ><Icon>expand_more</Icon></Button></div>
                   </Grid> */}
-                  <Grid style={styles.root} className="myEventCards"item xs={8}>
                       <div className="cardText">
                       <div>
                         <h4>{this.props.event.event_name}</h4>
@@ -69,7 +66,6 @@ cancelEvent = () => {
                         <IconButton onClick={this.cancelEvent}><Delete /></IconButton>
                         </div>
                       </div>
-                  </Grid>
                   {/* <Grid item xs={2}>
                       <div id="deviceEdit"><Button color="primary">Edit</Button></div>
                   </Grid> */}
@@ -78,7 +74,6 @@ cancelEvent = () => {
                   </Grid> */}
                 </Card>
 
-              </Grid>
         )
     }
 }
@@ -88,6 +83,6 @@ const mapStateToProps = state => ({
     state: state
   });
 
-  const eventCard = withStyles(styles)(MyEventCard);
 
-export default connect(mapStateToProps)(eventCard);
+
+export default connect(mapStateToProps)(MyEventCard);

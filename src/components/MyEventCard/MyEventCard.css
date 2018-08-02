@@ -1,9 +1,10 @@
 .myEventCard {
     padding: 0px;
-    width: 100%;
+    width: 25%;
     margin: 10px;
     justify-content: center;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .cardText {

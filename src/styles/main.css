@@ -94,6 +94,8 @@ li a:hover {
 
 .userPage__container {
     padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .listName {

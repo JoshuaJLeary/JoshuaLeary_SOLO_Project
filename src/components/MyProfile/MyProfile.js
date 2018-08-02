@@ -6,6 +6,7 @@ import { Delete } from '@material-ui/icons';
 import Paper from 'material-ui/Paper';
 import MyProfileView from '../MyProfileView/MyProfileView';
 import { connect } from 'react-redux';
+import '../MyProfile/MyProfile.css';
 
 class MyProfile extends Component {
     render() {
@@ -15,7 +16,7 @@ class MyProfile extends Component {
             return <MyProfileView handleClickEdit = {this.props.handleClickEdit} golfer={golfer}/> 
           })
         return (
-            <div>
+            <div className="myProfileWidth">
                 {myGolf}
             </div>
         )

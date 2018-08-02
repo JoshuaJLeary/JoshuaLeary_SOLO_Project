@@ -52,7 +52,7 @@ class UserPage extends Component {
     })
 
     return (
-      <div>
+      <div className="wrapUpcoming">
         <Nav />
         { content }
  
@@ -66,7 +66,7 @@ class UserPage extends Component {
 
             {showMyEvents}
 
-            <button type="button" onClick={this.logout}>
+            <button className="logoutBtn" type="button" onClick={this.logout}>
               Log Out
             </button>
           </div>

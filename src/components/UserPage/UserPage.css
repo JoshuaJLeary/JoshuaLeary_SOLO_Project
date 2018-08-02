@@ -3,3 +3,14 @@
     padding: 0px;
 }
 
+.logoutBtn {
+    position: sticky;
+    bottom: 0;
+    height: 3em;
+    width: 6em;
+}
+
+/* .wrapUpcoming {
+    display: flex;
+    flex-wrap: wrap;
+} */
