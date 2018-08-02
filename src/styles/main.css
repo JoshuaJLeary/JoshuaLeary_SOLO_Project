@@ -109,9 +109,13 @@ li a:hover {
     color: black;
 }
 
-.ce {
-    color: black;
+.centerCreateEvent {
+    text-align: center;
 }
+
+/* .ce {
+    color: black;
+} */
 
 .profile {
     background-color: blueviolet;

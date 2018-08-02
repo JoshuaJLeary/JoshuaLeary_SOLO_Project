@@ -16,16 +16,6 @@ import '../EventCard2/EventCard2.css';
 
 const mapStateToProps = state => ({state});
 
-const styles = theme => ({
-    root: {
-      width: '100%',
-    },
-    heading: {
-      fontSize: theme.typography.pxToRem(15),
-      fontWeight: theme.typography.fontWeightRegular,
-    },
-  });
-
 class EventCard2 extends Component {
     // componentDidMount() {
     //     this.props.dispatch({type: 'FETCH_ATTENDING'});
@@ -51,10 +41,10 @@ class EventCard2 extends Component {
         })
         const { classes } = this.props;
         return (
-            <div className={classes.root}>
+            <div className="panels">
       <ExpansionPanel className="expansionPanel">
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography className={classes.heading}>{this.props.event.event_name}</Typography>
+          <Typography >{this.props.event.event_name}</Typography>
         </ExpansionPanelSummary>
          <Button variant="raised" color="secondary" onClick={() => this.handleJoinEvent(this.props.event)}>Join</Button>
         <ExpansionPanelDetails>
@@ -90,6 +80,4 @@ class EventCard2 extends Component {
     }
 }
 
-const expansionPanel = withStyles(styles)(EventCard2);
-
-export default connect(mapStateToProps)(expansionPanel);
+export default connect(mapStateToProps)(EventCard2);

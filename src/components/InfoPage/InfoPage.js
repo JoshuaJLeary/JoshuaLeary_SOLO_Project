@@ -5,6 +5,7 @@ import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import CreateEventButton from '../CreateEventButton/CreateEventButton';
 import EventCard2 from '../EventCard2/EventCard2';
+import '../InfoPage/InfoPage.css';
 
 
 const mapStateToProps = state => ({
@@ -48,7 +49,7 @@ class InfoPage extends Component {
       <div>
         <Nav />
         { content }
-        <div>
+        <div className="wrap">
         {showEvents}
         </div>
       </div>

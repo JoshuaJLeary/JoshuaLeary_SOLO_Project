@@ -5,6 +5,7 @@ import Button from 'material-ui/Button';
 import AddIcon from '@material-ui/icons/Add';
 import Icon from 'material-ui/Icon';
 import { Link } from 'react-router-dom';
+import '../CreateEventButton/CreateEventButton.css';
 
 
 class CreateEventButton extends Component {
