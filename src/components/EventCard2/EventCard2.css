@@ -1,6 +1,17 @@
 /* .expansion {
     margin: 15px;
 } */
+
+/* .panels {
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-rows: 20% 20% 20% 20%;
+    grid-template-columns: 20% 20% 20% 20%;
+} */
+
 .expansionPanel {
     margin: 12px;
+    /* display: grid;
+    grid-template-rows: 20% 20% 20% 20%;
+    grid-template-columns: 20% 20% 20% 20%; */
 }

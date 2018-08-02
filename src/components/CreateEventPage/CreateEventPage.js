@@ -41,7 +41,7 @@ eventDetails = (event) => {
 
     render() {
         return(
-            <div>
+            <div className="centerCreateEvent">
                 <div>
                 <TextField
                 id="name"
