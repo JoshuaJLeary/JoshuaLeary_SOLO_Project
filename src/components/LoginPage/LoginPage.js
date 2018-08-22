@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 import Button from 'material-ui/Button';
+import '../LoginPage/LoginPage.css';
 
 
 const mapStateToProps = state => ({
@@ -64,9 +65,9 @@ class LoginPage extends Component {
     return (
       <div>
         { this.renderAlert() }
-          <h1>Login</h1>
+          <h1 className="loginTxt" >Login</h1>
           <div>
-            <label htmlFor="username">
+            <label className="loginTxt" htmlFor="username">
               Username:
               <input
                 type="text"
@@ -77,7 +78,7 @@ class LoginPage extends Component {
             </label>
           </div>
           <div>
-            <label htmlFor="password">
+            <label className="loginTxt" htmlFor="password">
               Password:
               <input
                 type="password"
